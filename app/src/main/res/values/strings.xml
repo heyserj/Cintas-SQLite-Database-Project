@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">RecyclerView Database Project</string>
+    <string name="event_time_hint">Event Time</string>
+    <string name="serial_num_hint">Serial Number of the Device</string>
+    <string name="user_id_hint">The SSR\'s User ID</string>
+    <string name="location_hint">Location Number of Current Route</string>
+    <string name="route_hint">Route on Current PRC</string>
+    <string name="day_hint">Day</string>
+    <string name="logger_hint">Logger</string>
+    <string name="event_number_hint">The Type of Log Message</string>
+    <string name="additional_description_hint">Additional Description of the Event</string>
+    <string name="additional_number_hint">Additional Number Description</string>
+    <string name="submit_btn_text">SUBMIT</string>
+    <string name="update_btn_text">UPDATE</string>
+    <string name="display_btn_text">DISPLAY</string>
+    <string name="return_btn_text">RETURN</string>
+    <string name="return_to_home_btn_text">BACK</string>
+    <string name="insert_device_entries_btn_text">INSERT DEVICE INFO</string>
+    <string name="display_xml_btn_text">DISPLAY XML</string>
+    <string name="delete_all_btn_text">DELETE ALL</string>
+    <string name="xml_display_return_btn_text">RETURN</string>
+
+</resources>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Display">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/cintas_logo2" />
+
+        <TextView
+            android:id="@+id/tv_EventTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="40dp"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/tv_HostId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            android:id="@+id/tv_AppId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            android:id="@+id/tv_UserId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            android:id="@+id/tv_LocationNbr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            android:id="@+id/tv_RouteNbr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            android:id="@+id/tv_Day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            android:id="@+id/tv_Logger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            android:id="@+id/tv_EventNbr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            android:id="@+id/tv_AddtDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            android:id="@+id/tv_AddtNbr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp" />
+
+        <Button
+            android:id="@+id/return_btn"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="65dp"
+            android:text="@string/return_btn_text"
+            android:layout_marginBottom="30dp"
+            android:textAlignment="center" />
+    </LinearLayout>
+</ScrollView>

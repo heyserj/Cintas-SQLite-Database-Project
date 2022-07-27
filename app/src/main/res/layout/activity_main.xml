@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/cintas_logo2" />
+
+        <EditText
+            android:id="@+id/EventTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:cursorVisible="false"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="30dp"
+            android:hint="@string/event_time_hint"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/HostId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="30dp"
+            android:hint="@string/serial_num_hint"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/UserId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="30dp"
+            android:hint="@string/user_id_hint"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/LocationNbr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="30dp"
+            android:maxLength="4"
+            android:digits="0123456789"
+            android:hint="@string/location_hint"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/RouteNbr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="30dp"
+            android:digits="0123456789"
+            android:maxLength="2"
+            android:hint="@string/route_hint"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/Day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:maxLength="1"
+            android:digits="0123456789"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="30dp"
+            android:hint="@string/day_hint"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/Logger"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="30dp"
+            android:hint="@string/logger_hint"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/EventNbr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="30dp"
+            android:hint="@string/event_number_hint"
+            android:inputType="number"
+            android:digits="0123456789"
+            android:maxLength="5" />
+
+        <EditText
+            android:id="@+id/AddtDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="30dp"
+            android:hint="@string/additional_description_hint"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/AddtNbr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="30dp"
+            android:hint="@string/additional_number_hint"
+            android:inputType="number"
+            android:digits="0123456789" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="65dp"
+            android:orientation="horizontal"
+            android:paddingHorizontal="30dp">
+
+            <Button
+                android:id="@+id/submit_btn"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="30dp"
+                android:text="@string/submit_btn_text"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/edit_btn"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="30dp"
+                android:text="@string/update_btn_text"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/display_btn"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="40dp"
+            android:text="@string/display_btn_text"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+</ScrollView>
