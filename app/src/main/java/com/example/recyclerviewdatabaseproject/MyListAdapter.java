@@ -18,14 +18,14 @@ import com.example.databaselibrary.DBmain;
 import java.util.ArrayList;
 
 public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder> {
-    private ArrayList<MyListData> listdata;
+    private ArrayList<MyListData> listData;
     private Context context;
     private DBmain dBmain;
 
     // RecyclerView recyclerView;
-    public MyListAdapter(ArrayList<MyListData> listdata, Context context) {
+    public MyListAdapter(ArrayList<MyListData> listData, Context context) {
         this.dBmain = new DBmain(context);
-        this.listdata = listdata;
+        this.listData = listData;
         this.context = context;
     }
 
@@ -39,58 +39,57 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final MyListData myListData = listdata.get(position);
-        holder.textView.setText(listdata.get(position).getEventTime());
-        holder.infoImageView.setImageResource(listdata.get(position).getInfoImvId());
+        final MyListData mylistData = listData.get(position);
+        holder.textView.setText(listData.get(position).getEventTime());
+        holder.infoImageView.setImageResource(listData.get(position).getInfoImvId());
         holder.infoImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putInt("id", listdata.get(holder.getAdapterPosition()).getId());
-                bundle.putString("eventTime", listdata.get(holder.getAdapterPosition()).getEventTime());
-                bundle.putString("hostId", listdata.get(holder.getAdapterPosition()).getSerialNum());
-                bundle.putString("userId", listdata.get(holder.getAdapterPosition()).getEmpId());
-                bundle.putInt("locationNbr", listdata.get(holder.getAdapterPosition()).getLocation());
-                bundle.putInt("routeNbr", listdata.get(holder.getAdapterPosition()).getRoute());
-                bundle.putInt("day", listdata.get(holder.getAdapterPosition()).getDay());
-                bundle.putString("logger", listdata.get(holder.getAdapterPosition()).getLogger());
-                bundle.putInt("eventNbr", listdata.get(holder.getAdapterPosition()).getEventNum());
-                bundle.putString("addtDesc", listdata.get(holder.getAdapterPosition()).getEventAdditionalDesc());
-                bundle.putInt("addtNbr", listdata.get(holder.getAdapterPosition()).getEventAdditionalNum());
+                bundle.putInt("id", listData.get(holder.getAdapterPosition()).getId());
+                bundle.putString("eventTime", listData.get(holder.getAdapterPosition()).getEventTime());
+                bundle.putString("hostId", listData.get(holder.getAdapterPosition()).getSerialNum());
+                bundle.putString("userId", listData.get(holder.getAdapterPosition()).getEmpId());
+                bundle.putInt("locationNbr", listData.get(holder.getAdapterPosition()).getLocation());
+                bundle.putInt("routeNbr", listData.get(holder.getAdapterPosition()).getRoute());
+                bundle.putInt("day", listData.get(holder.getAdapterPosition()).getDay());
+                bundle.putString("logger", listData.get(holder.getAdapterPosition()).getLogger());
+                bundle.putInt("eventNbr", listData.get(holder.getAdapterPosition()).getEventNum());
+                bundle.putString("addtDesc", listData.get(holder.getAdapterPosition()).getEventAdditionalDesc());
+                bundle.putInt("addtNbr", listData.get(holder.getAdapterPosition()).getEventAdditionalNum());
                 Intent intent = new Intent(context, Display.class);
                 intent.putExtra("record", bundle); //sending the bundle to MainActivity
                 context.startActivity(intent);
 
             }
         });
-        holder.editImageView.setImageResource(listdata.get(position).getEditImvId());
+        holder.editImageView.setImageResource(listData.get(position).getEditImvId());
         holder.editImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putInt("id", listdata.get(holder.getAdapterPosition()).getId());
-                bundle.putString("eventTime", listdata.get(holder.getAdapterPosition()).getEventTime());
-                bundle.putString("hostId", listdata.get(holder.getAdapterPosition()).getSerialNum());
-                bundle.putString("userId", listdata.get(holder.getAdapterPosition()).getEmpId());
-                bundle.putInt("locationNbr", listdata.get(holder.getAdapterPosition()).getLocation());
-                bundle.putInt("routeNbr", listdata.get(holder.getAdapterPosition()).getRoute());
-                bundle.putInt("day", listdata.get(holder.getAdapterPosition()).getDay());
-                bundle.putString("logger", listdata.get(holder.getAdapterPosition()).getLogger());
-                bundle.putInt("eventNbr", listdata.get(holder.getAdapterPosition()).getEventNum());
-                bundle.putString("addtDesc", listdata.get(holder.getAdapterPosition()).getEventAdditionalDesc());
-                bundle.putInt("addtNbr", listdata.get(holder.getAdapterPosition()).getEventAdditionalNum());
+                bundle.putInt("id", listData.get(holder.getAdapterPosition()).getId());
+                bundle.putString("eventTime", listData.get(holder.getAdapterPosition()).getEventTime());
+                bundle.putString("hostId", listData.get(holder.getAdapterPosition()).getSerialNum());
+                bundle.putString("userId", listData.get(holder.getAdapterPosition()).getEmpId());
+                bundle.putInt("locationNbr", listData.get(holder.getAdapterPosition()).getLocation());
+                bundle.putInt("routeNbr", listData.get(holder.getAdapterPosition()).getRoute());
+                bundle.putInt("day", listData.get(holder.getAdapterPosition()).getDay());
+                bundle.putString("logger", listData.get(holder.getAdapterPosition()).getLogger());
+                bundle.putInt("eventNbr", listData.get(holder.getAdapterPosition()).getEventNum());
+                bundle.putString("addtDesc", listData.get(holder.getAdapterPosition()).getEventAdditionalDesc());
+                bundle.putInt("addtNbr", listData.get(holder.getAdapterPosition()).getEventAdditionalNum());
                 Intent intent = new Intent(context, MainActivity.class);
                 intent.putExtra("record", bundle); //sending the bundle to MainActivity
                 context.startActivity(intent);
             }
         });
-        holder.deleteImageView.setImageResource(listdata.get(position).getDeleteImvId());
+        holder.deleteImageView.setImageResource(listData.get(position).getDeleteImvId());
         holder.deleteImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean result = dBmain.removeRecord(listdata.get(holder.getAdapterPosition()).getId());
+                boolean result = dBmain.removeRecord(listData.get(holder.getAdapterPosition()).getId());
                 if (result) {
-                    Toast.makeText(context, "The entry was successfully deleted!", Toast.LENGTH_SHORT).show();
                     remove(holder.getAdapterPosition());
                 } else {
                     Toast.makeText(context, "There was an error deleting the record. Try again.", Toast.LENGTH_SHORT).show();
@@ -100,13 +99,13 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
     }
 
     private void remove(int position) {
-        listdata.remove(position);
+        listData.remove(position);
         notifyItemRemoved(position);
     }
 
     @Override
     public int getItemCount() {
-        return listdata.size();
+        return listData.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -118,10 +117,10 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
 
         public ViewHolder(View itemView) {
             super(itemView);
-            this.infoImageView = (ImageView) itemView.findViewById(R.id.imageView);
+            this.infoImageView = (ImageView) itemView.findViewById(R.id.imv_single_data);
             this.deleteImageView = (ImageView) itemView.findViewById(R.id.imv_delete);
             this.editImageView = (ImageView) itemView.findViewById(R.id.imv_edit);
-            this.textView = (TextView) itemView.findViewById(R.id.textView);
+            this.textView = (TextView) itemView.findViewById(R.id.tv_single_data);
             cardView = (CardView) itemView.findViewById(R.id.cardView);
         }
     }

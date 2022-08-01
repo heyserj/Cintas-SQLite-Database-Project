@@ -15,7 +15,7 @@
         android:background="@drawable/border">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imv_single_data"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentStart="true"
@@ -27,12 +27,12 @@
             app:tint="@color/black" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tv_single_data"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/imageView"
-            android:layout_toRightOf="@id/imageView"
+            android:layout_toEndOf="@id/imv_single_data"
+            android:layout_toRightOf="@id/imv_single_data"
             android:textSize="22sp" />
 
         <ImageView

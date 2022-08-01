@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity{
         dBmain = new DBmain(this);
 
         //create object
-        findid();
+        findId();
         setUpPickers();
 
         //disabling the edit button because the user hasn't chosen an entry
@@ -62,15 +62,12 @@ public class MainActivity extends AppCompatActivity{
         edit.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
 
         insertData();
-        cleardata();
-        editdata();
+        clearData();
+        editData();
 
         if (!startedFlag){
             insertExitRecord();
         }
-
-        //startedFlag = true;
-        //hostId.setText(UUID.randomUUID().toString();
     }
 
     @Override
@@ -86,16 +83,14 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onResume(){
         super.onResume();
-        //mBound = true;
         Intent intent = new Intent(this, NewService.class);
         bindService(intent, connection, Context.BIND_AUTO_CREATE);
-        //startedFlag = true;
     }
 
     @Override
     protected void onDestroy(){
         super.onDestroy();
-        if (! isChangingConfigurations()) {
+        if (!isChangingConfigurations()) {
             startedFlag = false;
             mService.insertExitRecord();
             updateTimeStamps();
@@ -122,7 +117,7 @@ public class MainActivity extends AppCompatActivity{
         }
     };
 
-    private void editdata() {
+    private void editData() {
         if (getIntent().getBundleExtra("record") != null) {
             Bundle bundle = getIntent().getBundleExtra("record");
             id = bundle.getInt("id");
@@ -144,7 +139,7 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
-    private void cleardata() {
+    private void clearData() {
         eventTime.setText("");
         hostId.setText("");
         userId.setText("");
@@ -199,14 +194,9 @@ public class MainActivity extends AppCompatActivity{
                     param11 = -1;
                 }
 
-                boolean result = dBmain.insert(param2, param3, param4, param5, param6, param7, param8,
+                dBmain.insert(param2, param3, param4, param5, param6, param7, param8,
                         param9, param10, param11);
-                if (result) {
-                    Toast.makeText(MainActivity.this, "The record was successfully inserted!", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(MainActivity.this, "There was an error inserting the record. Try again.", Toast.LENGTH_SHORT).show();
-                }
-                cleardata();
+                clearData();
             }
         });
         display.setOnClickListener(new View.OnClickListener() { //want to display the entries in the database
@@ -260,7 +250,6 @@ public class MainActivity extends AppCompatActivity{
                 boolean result = dBmain.updateRecord(id, param2, param3, param4, param5, param6, param7, param8,
                         param9, param10, param11);
                 if (result) {
-                    Toast.makeText(MainActivity.this, "The update was successful!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                     startActivity(intent);
 
@@ -299,25 +288,25 @@ public class MainActivity extends AppCompatActivity{
 
     private void updateLabel() {
         String format = "M/d/yy h:mm:00 a";
-        SimpleDateFormat dateFormat = new SimpleDateFormat(format, Locale.US);
+        SimpleDateFormat dateFormat = new SimpleDateFormat(format,Locale.US);
         eventTime.setText(dateFormat.format(myCalendar.getTime()));
     }
 
-    private void findid() {
-        eventTime = (EditText) findViewById(R.id.EventTime);
-        hostId = (EditText) findViewById(R.id.HostId);
-        userId = (EditText) findViewById(R.id.UserId);
-        locationNbr = (EditText) findViewById(R.id.LocationNbr);
-        routeNbr = (EditText) findViewById(R.id.RouteNbr);
-        day = (EditText) findViewById(R.id.Day);
-        logger = (EditText) findViewById(R.id.Logger);
-        eventNbr = (EditText) findViewById(R.id.EventNbr);
-        addtDesc = (EditText) findViewById(R.id.AddtDesc);
-        addtNbr = (EditText) findViewById(R.id.AddtNbr);
+    private void findId() {
+        eventTime = (EditText) findViewById(R.id.et_event_time);
+        hostId = (EditText) findViewById(R.id.et_host_id);
+        userId = (EditText) findViewById(R.id.et_user_id);
+        locationNbr = (EditText) findViewById(R.id.et_location_nbr);
+        routeNbr = (EditText) findViewById(R.id.et_route_nbr);
+        day = (EditText) findViewById(R.id.et_day);
+        logger = (EditText) findViewById(R.id.et_logger);
+        eventNbr = (EditText) findViewById(R.id.et_event_nbr);
+        addtDesc = (EditText) findViewById(R.id.et_addt_desc);
+        addtNbr = (EditText) findViewById(R.id.et_addt_nbr);
 
-        submit = (Button) findViewById(R.id.submit_btn);
-        display = (Button) findViewById(R.id.display_btn);
-        edit = (Button) findViewById(R.id.edit_btn);
+        submit = (Button) findViewById(R.id.btn_submit);
+        display = (Button) findViewById(R.id.btn_display);
+        edit = (Button) findViewById(R.id.btn_edit);
     }
 
     private void updateTimeStamps(){
@@ -327,7 +316,7 @@ public class MainActivity extends AppCompatActivity{
         SimpleDateFormat dateFormat = new SimpleDateFormat(format, Locale.US);
         String currentTime = dateFormat.format(myCalendar.getTime());
         editor.putString("currentTime", currentTime);
-        editor.commit();
+        editor.apply();
     }
 
     private void insertExitRecord(){

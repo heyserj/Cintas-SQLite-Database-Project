@@ -1,8 +1,10 @@
 package com.example.recyclerviewdatabaseproject;
 
+import android.Manifest;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.os.BatteryManager;
@@ -12,12 +14,13 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.databaselibrary.DBmain;
 
-import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -34,44 +37,35 @@ public class MainActivity2 extends AppCompatActivity {
     Button backBtn, insertBtn, deleteAllBtn, displayXmlBtn;
     RecyclerView rv;
     private ArrayList<MyListData> myListData;
+    private String serialNum;
     final Calendar myCalendar = Calendar.getInstance();
 
-    //@RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
         dBmain = new DBmain(this);
-        findid();
-        displaydata();
+        findId();
+        displayData();
         initializeButtons();
 
-        /*if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, 101);
-        }*/
+        if (ContextCompat.checkSelfPermission(MainActivity2.this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(MainActivity2.this, new String[] {Manifest.permission.READ_PHONE_STATE}, 100);
+        }
+        else{
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+                if (Build.getRadioVersion() != null){
+                    serialNum = Build.getRadioVersion();
+                }
+            }
+            else{
+                serialNum = Build.SERIAL;
+            }
+        }
     }
 
-    /*@RequiresApi(api = Build.VERSION_CODES.O)
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case 101:
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-                    return;
-                }
-                initializeButtons();
-            } else {
-                //not granted
-            }
-            break;
-            default:
-                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
-    }*/
-
-    private void displaydata() {
+    private void displayData() {
         Cursor cursor = dBmain.getAllData();
         myListData = new ArrayList<>();
         if (cursor.getCount() > 0) { //if there's at least one entry in the database
@@ -99,19 +93,19 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
     private void updateRecyclerView() {
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv);
         MyListAdapter adapter = new MyListAdapter(myListData, this);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
     }
 
-    private void findid() {
-        rv = findViewById(R.id.recyclerView);
-        backBtn = (Button) findViewById(R.id.return_to_home_btn);
-        insertBtn = (Button) findViewById(R.id.insert_device_info_btn);
-        deleteAllBtn = (Button) findViewById(R.id.delete_all_btn);
-        displayXmlBtn = (Button) findViewById(R.id.display_xml_btn);
+    private void findId() {
+        rv = findViewById(R.id.rv);
+        backBtn = (Button) findViewById(R.id.btn_return_to_home);
+        insertBtn = (Button) findViewById(R.id.btn_insert_device_info);
+        deleteAllBtn = (Button) findViewById(R.id.btn_delete_all);
+        displayXmlBtn = (Button) findViewById(R.id.btn_display_xml);
     }
 
     private void initializeButtons() {
@@ -124,7 +118,6 @@ public class MainActivity2 extends AppCompatActivity {
         });
 
         insertBtn.setOnClickListener(new View.OnClickListener() {
-            //@RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 insertMemoryStatus();
@@ -137,7 +130,7 @@ public class MainActivity2 extends AppCompatActivity {
                 }
                 insertSerialNumber();
                 insertAppInfo();
-                displaydata();
+                displayData();
             }
         });
 
@@ -145,7 +138,7 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dBmain.removeAll();
-                displaydata();
+                displayData();
             }
         });
         displayXmlBtn.setOnClickListener(new View.OnClickListener() {
@@ -204,7 +197,7 @@ public class MainActivity2 extends AppCompatActivity {
                 }
             }
         } catch (Exception ignored) {
-        } // for now eat exceptions
+        }
         return "";
     }
 
@@ -238,37 +231,27 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
     private void insertSerialNumber(){
-        String serialNum = getSerialNumber();
+        //String serialNum = getSerialNumber();
         String curTime = getCurrentTime();
         dBmain.insert(curTime, serialNum, "", -1, -1, -1, "", -1, "", -1);
     }
 
-    public static String getSerialNumber() {
-        String serialNumber;
-
-        try {
-            Class<?> c = Class.forName("android.os.SystemProperties");
-            Method get = c.getMethod("get", String.class);
-
-            serialNumber = (String) get.invoke(c, "gsm.sn1");
-            if (serialNumber.equals(""))
-                serialNumber = (String) get.invoke(c, "ril.serialnumber");
-            if (serialNumber.equals(""))
-                serialNumber = (String) get.invoke(c, "ro.serialno");
-            if (serialNumber.equals(""))
-                serialNumber = (String) get.invoke(c, "sys.serialnumber");
-            if (serialNumber.equals(""))
-                serialNumber = Build.SERIAL;
-
-            // If none of the methods above worked
-            if (serialNumber.equals(""))
-                serialNumber = null;
-        } catch (Exception e) {
-            e.printStackTrace();
-            serialNumber = null;
+    private String getSerialNumber() {
+        String serialNum = "";
+        if (ContextCompat.checkSelfPermission(MainActivity2.this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(MainActivity2.this, new String[] {Manifest.permission.READ_PHONE_STATE}, 100);
         }
-
-        return serialNumber;
+        else{
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+                if (Build.getRadioVersion() != null){
+                    serialNum = Build.getRadioVersion();
+                }
+            }
+            else{
+                serialNum = Build.SERIAL;
+            }
+        }
+        return serialNum;
     }
 
     private void insertAppInfo(){

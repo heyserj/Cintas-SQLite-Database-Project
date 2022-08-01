@@ -19,7 +19,6 @@ public class NewService extends Service {
     DBmain dBmain;
     final Calendar myCalendar = Calendar.getInstance();
     private final IBinder binder = new LocalBinder();
-    public static boolean isRunning = false;
 
     public class LocalBinder extends Binder {
         NewService getService(){
@@ -30,14 +29,11 @@ public class NewService extends Service {
     @Override
     public void onCreate(){
         dBmain = new DBmain(this);
-        isRunning = true;
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        isRunning = false;
-        //insertExitRecord();
     }
 
     @Override

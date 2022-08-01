@@ -14,8 +14,8 @@ import com.example.databaselibrary.DBmain;
 public class DisplayXml extends AppCompatActivity {
 
     DBmain dBmain;
-    Button return_btn;
-    TextView xml_tv;
+    Button returnBtn;
+    TextView xmlTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,21 +29,19 @@ public class DisplayXml extends AppCompatActivity {
         initializeButton();
     }
 
-    private void findId(){
-        return_btn = (Button) findViewById(R.id.xml_display_return_btn);
-        xml_tv = (TextView) findViewById(R.id.tv_display_xml);
+    private void findId() {
+        returnBtn = (Button) findViewById(R.id.btn_xml_display_return);
+        xmlTv = (TextView) findViewById(R.id.tv_display_xml);
     }
 
-    private void displayData(){
+    private void displayData() {
         Cursor cursor = dBmain.getAllData();
         StringBuilder builder = new StringBuilder("CPRNT;");
         if (cursor.getCount() > 0) { //if there's at least one entry in the database
 
             while (cursor.moveToNext()) {
-                int param1 = cursor.getInt(0); //getting the first entry that the Cursor is pointing to
                 String eventTime = cursor.getString(1); //getting the second entry that the Cursor is pointing to
                 String hostId = cursor.getString(2); //getting the third entry that the Cursor is pointing to
-                String appId = cursor.getString(3); //AppId
                 String userId = cursor.getString(4);
                 int locationNbr = cursor.getInt(5);
                 int routeNbr = cursor.getInt(6);
@@ -59,11 +57,11 @@ public class DisplayXml extends AppCompatActivity {
                         + "\" AddtlNbr=\"" + addtlNbr + "\" />");
             }
         }
-        xml_tv.setText(builder.toString());
+        xmlTv.setText(builder.toString());
     }
 
-    private void initializeButton(){
-        return_btn.setOnClickListener(new View.OnClickListener() {
+    private void initializeButton() {
+        returnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DisplayXml.this, MainActivity2.class);

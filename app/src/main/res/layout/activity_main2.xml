@@ -11,7 +11,7 @@
         android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -25,7 +25,7 @@
             android:paddingHorizontal="30dp">
 
             <Button
-                android:id="@+id/return_to_home_btn"
+                android:id="@+id/btn_return_to_home"
                 android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -34,7 +34,7 @@
                 android:textAlignment="center" />
 
             <Button
-                android:id="@+id/delete_all_btn"
+                android:id="@+id/btn_delete_all"
                 android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -52,7 +52,7 @@
             android:paddingHorizontal="30dp">
 
             <Button
-                android:id="@+id/insert_device_info_btn"
+                android:id="@+id/btn_insert_device_info"
                 android:layout_width="125dp"
                 android:layout_height="80dp"
                 android:layout_gravity="center_horizontal"
@@ -62,7 +62,7 @@
                 android:textAlignment="center" />
 
             <Button
-                android:id="@+id/display_xml_btn"
+                android:id="@+id/btn_display_xml"
                 android:layout_width="125dp"
                 android:layout_height="80dp"
                 android:layout_gravity="center_horizontal"

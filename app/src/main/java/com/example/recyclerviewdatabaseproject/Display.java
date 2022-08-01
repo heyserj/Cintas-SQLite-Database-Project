@@ -30,18 +30,18 @@ public class Display extends AppCompatActivity {
     }
 
     private void initializeId(){
-        goBack = (Button) findViewById(R.id.return_btn);
-        eventTime = (TextView) findViewById(R.id.tv_EventTime);
-        hostId = (TextView) findViewById(R.id.tv_HostId);
-        userId = (TextView) findViewById(R.id.tv_UserId);
-        appId = (TextView) findViewById(R.id.tv_AppId);
-        locationNbr = (TextView) findViewById(R.id.tv_LocationNbr);
-        routeNbr = (TextView) findViewById(R.id.tv_RouteNbr);
-        day = (TextView) findViewById(R.id.tv_Day);
-        logger = (TextView) findViewById(R.id.tv_Logger);
-        eventNbr = (TextView) findViewById(R.id.tv_EventNbr);
-        addtDesc = (TextView) findViewById(R.id.tv_AddtDesc);
-        addtNbr = (TextView) findViewById(R.id.tv_AddtNbr);
+        goBack = (Button) findViewById(R.id.btn_return);
+        eventTime = (TextView) findViewById(R.id.tv_event_time);
+        hostId = (TextView) findViewById(R.id.tv_host_id);
+        userId = (TextView) findViewById(R.id.tv_user_id);
+        appId = (TextView) findViewById(R.id.tv_app_id);
+        locationNbr = (TextView) findViewById(R.id.tv_location_nbr);
+        routeNbr = (TextView) findViewById(R.id.tv_route_nbr);
+        day = (TextView) findViewById(R.id.tv_day);
+        logger = (TextView) findViewById(R.id.tv_logger);
+        eventNbr = (TextView) findViewById(R.id.tv_event_nbr);
+        addtDesc = (TextView) findViewById(R.id.tv_addt_desc);
+        addtNbr = (TextView) findViewById(R.id.tv_addt_nbr);
     }
 
     private void initializeTextViews(){
