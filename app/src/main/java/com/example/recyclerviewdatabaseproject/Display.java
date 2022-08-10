@@ -12,13 +12,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+
+/**
+ * Class that represents the activity in the app that displays all of the data fields for a
+ * particular record
+ */
 public class Display extends AppCompatActivity {
 
-    Button goBack;
-    TextView eventTime, hostId, userId, locationNbr, routeNbr, appId;
-    TextView day, logger, eventNbr, addtDesc, addtNbr;
-    int id = 0;
+    Button goBack; // Button that takes the user back to the main activity displaying all of the records
+    TextView eventTime, hostId, userId, locationNbr, routeNbr, appId; // the TextViews for the different fields in the record
+    TextView day, logger, eventNbr, addtDesc, addtNbr; // the TextViews for the different fields in the record
+    int id = 0; // the id of a specific entry
 
+
+    /**
+     * Driver method for the project that calls the necessary methods that retrieve and display all
+     * the data in the database for the desired record
+     *
+     * @param savedInstanceState a bundle of the saved state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +41,10 @@ public class Display extends AppCompatActivity {
         initializeReturnButton();
     }
 
+
+    /**
+     * Method that links the fields in this class to their id's in the XML file
+     */
     private void initializeId(){
         goBack = (Button) findViewById(R.id.btn_return);
         eventTime = (TextView) findViewById(R.id.tv_event_time);
@@ -44,6 +60,10 @@ public class Display extends AppCompatActivity {
         addtNbr = (TextView) findViewById(R.id.tv_addt_nbr);
     }
 
+
+    /**
+     * Method that sets the text in the TextViews to the corresponding fields in the database
+     */
     private void initializeTextViews(){
         Bundle bundle = getIntent().getBundleExtra("record");
         id = bundle.getInt("id");
@@ -93,6 +113,11 @@ public class Display extends AppCompatActivity {
         appId.setText(sb11);
     }
 
+
+    /**
+     * Method that initializes the return button so that it takes the user back to the main
+     * activity that displays the event times from all of the records in the database
+     */
     private void initializeReturnButton(){
         goBack.setOnClickListener(new View.OnClickListener() {
             @Override
